@@ -105,8 +105,7 @@ class Regex(Parser):
         self.regex = re.compile(regex)
 
     def parse(self, string):
-        match = self.regex.match(string)
-        if match is None:
+        if (match := self.regex.match(string)) is None:
             raise ParseFailure
         return [match.group()], string[match.end():]
 
